@@ -1,0 +1,69 @@
+<div class="toolbar" role="banner">
+  <span>Previsão do tempo para {{ apiMock.city }}</span>
+</div>
+
+<div class="content" role="main">
+
+  <div class="presentWeather">
+    <div class="card" style="width: 18rem; height: 12rem;">
+      <div class="card-body">
+        <h2 class="card-title">{{ forecast[0].weekday }} {{ apiMock.date }} - {{ apiMock.temp }}ºC</h2>
+        <span class="card-text">
+          <ul>
+            <li>
+              Máx: {{ forecast[0].max }}ºC - Min: {{ forecast[0].min }}ºC
+            </li>
+            <li>
+              {{ apiMock?.description }}
+            </li>
+            <li>
+              Umidade do ar: {{ apiMock?.humidity }}
+            </li>
+            <li>
+              Ventos à {{ apiMock?.wind_speedy }}
+            </li>
+            <li>
+              Nascer do sol: {{ apiMock?.sunrise }}
+            </li>
+            <li>
+              Pôr do sol: {{ apiMock?.sunset }}
+            </li>
+            <li>
+              Última vez atualizado em: {{ apiMock?.time }}
+            </li>
+          </ul>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h4>
+      Previsão para:
+    </h4> 
+    <button type="button" class="btn btn-primary" (click)="setDaysAmout(7)">7 dias</button>
+    <button type="button" class="btn btn-primary" (click)="setDaysAmout(10)">10 dias</button>
+    <p>Mostrando previsão para {{daysAmount}} dias</p>
+  </div>
+
+  <div class="weatherForecast">
+    <div class="card" style="height: 5rem; width: 18rem;" *ngFor="let df of defaultForecast">
+      <h2 class="card-title">{{ df.date }}</h2>
+      <div class="card-body">
+        <ul>
+          <li>
+            {{ df.weekday }}
+          </li>
+          <li>
+            Máx {{ df.max }}ºC
+          </li>
+          <li>
+            Min {{ df.min }}ºC
+          </li>
+          <li>
+            {{ df.description }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
